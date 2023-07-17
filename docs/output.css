@@ -534,6 +534,11 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mb-7 {
   margin-bottom: 1.75rem;
 }
@@ -571,4 +576,8 @@ video {
 
 .font-bold {
   font-weight: 700;
+}
+
+.underline {
+  text-decoration-line: underline;
 }
