@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="output.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="script.js"></script>
+</head>
+  <body>
+    <div class="p-5 text-center" x-data="iceBreakers()">
+      <h1 class="text-3xl font-bold mb-7">Ice Breakers</h1>
+      <p class="mb-7" x-text="current"></p>
+      <button class="bg-green-400 p-2 border-green-700 rounded" type="button" @click="newIceBreaker">Click for a new one!</button>
+    </div>
+    <script>
+      function iceBreakers() {
+        return {
+          current: '',
+          init() {
+            this.newIceBreaker();
+          },
+          newIceBreaker() {
+            this.current = this.iceBreakers[Math.floor(Math.random() * this.iceBreakers.length)];
+          },
+          iceBreakers: [
+            "What's your favourite colour?",
+            "Are you a cat person or a dog person?",
+            "If you could have a superpower, what would it be?"
+          ]
+        }
+      }
+    </script>
+  </body>
+</html>
