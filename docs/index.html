@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="output.css" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="script.js"></script>
 </head>
   <body>
     <div class="p-5 text-center" x-data="iceBreakers()">
@@ -17,11 +16,25 @@
       function iceBreakers() {
         return {
           current: '',
+          index: 0,
           init() {
-            this.newIceBreaker();
+            this.shuffle();
+
+            this.current = this.iceBreakers[this.index];
+          },
+          shuffle() {
+            this.iceBreakers = this.iceBreakers.map(value => ({ value, sort: Math.random() }))
+              .sort((a, b) => a.sort - b.sort)
+              .map(({ value }) => value)
           },
           newIceBreaker() {
-            this.current = this.iceBreakers[Math.floor(Math.random() * this.iceBreakers.length)];
+            this.index++;
+
+            if (this.index > this.iceBreakers.length - 1) {
+              this.index = 0;
+            }
+
+            this.current = this.iceBreakers[this.index];
           },
           iceBreakers: [
             "What's your favourite colour?",
