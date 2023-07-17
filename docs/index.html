@@ -10,8 +10,8 @@
     <div class="p-5 text-center" x-data="iceBreakers()">
       <h1 class="text-3xl font-bold mb-7">Ice Breakers</h1>
       <p class="mb-7" x-text="current"></p>
-      <button class="bg-green-400 p-2 border-green-700 rounded mb-7" type="button" @click="newIceBreaker">Click for a new one!</button>
-      <p><a class="underline" href="#" @click.prevent="share = !share">Click to share with a friend (reveal QR code)</a></p>
+      <button class="bg-green-400 p-2 border-green-700 rounded mb-7" type="button" @click="newIceBreaker">Another one!</button>
+      <p class="mb-7"><a class="underline" href="#" @click.prevent="share = !share">Share with a friend (tap to reveal QR code)</a></p>
       <img x-show="share" class="mx-auto" src="frame.png" alt="QR Code">
     </div>
     <script>
