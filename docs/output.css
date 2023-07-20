@@ -543,6 +543,10 @@ video {
   margin-bottom: 1.75rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -580,4 +584,13 @@ video {
 
 .underline {
   text-decoration-line: underline;
+}
+
+.disabled\:bg-gray-300:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
+.disabled\:opacity-30:disabled {
+  opacity: 0.3;
 }
