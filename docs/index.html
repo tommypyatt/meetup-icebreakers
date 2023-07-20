@@ -14,10 +14,22 @@
       <h1 class="text-3xl font-bold mb-7">Ice Breakers</h1>
       <p class="mb-7" x-text="current"></p>
       <button
-        class="bg-green-400 p-2 border-green-700 rounded mb-7 disabled:opacity-30 disabled:bg-gray-300"
+        class="bg-green-400 p-2 border-green-700 rounded mb-7 disabled:opacity-30 disabled:bg-gray-300 relative"
         type="button"
         @click="newIceBreaker"
-        x-text="buttonText">
+        :disabled="waiting"
+        :class="{'px-10': waiting}">
+        <span x-show="!waiting">Another one!</span>
+        <span
+          class="inline-block h-8 w-8 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] h-4 w-4"
+          role="status"
+          x-cloak
+          x-show="waiting">
+          <span
+            class="absolute -m-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+            >Loading...</span
+          >
+        </span>
       </button>
       <p class="mb-7"><a class="underline" href="#" @click.prevent="share = !share">Share with a friend (tap to reveal QR code)</a></p>
       <img x-show="share" x-cloak class="mx-auto" src="frame.png" alt="QR Code">
@@ -26,7 +38,7 @@
       function iceBreakers() {
         return {
           current: '',
-          buttonText: 'Another one!',
+          waiting: false,
           index: 0,
           share: false,
           init() {
@@ -49,10 +61,10 @@
 
             this.current = this.iceBreakers[this.index];
 
-            event.target.disabled = true;
+            this.waiting = true;
 
             window.setTimeout(() => {
-              event.target.disabled = false;
+              this.waiting = false;
             }, 5000);
           },
           iceBreakers: [
